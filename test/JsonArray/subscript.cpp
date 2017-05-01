@@ -42,13 +42,6 @@ TEST_CASE("JsonArray::operator[]") {
     REQUIRE(false == _array[0].is<int>());
   }
 
-  SECTION("StoreDoubleWithDecimals") {
-    _array[0].set(123.45, 2);
-    REQUIRE(123.45 == _array[0].as<double>());
-    REQUIRE(true == _array[0].is<double>());
-    REQUIRE(false == _array[0].is<int>());
-  }
-
   SECTION("StoreBoolean") {
     _array[0] = true;
     REQUIRE(true == _array[0].as<bool>());

@@ -40,14 +40,6 @@ TEST_CASE("JsonObject::set()") {
     REQUIRE_FALSE(_object["hello"].is<long>());
   }
 
-  SECTION("StoreDoubleWithDigits") {
-    _object.set("hello", 123.45, 2);
-
-    REQUIRE(123.45 == _object["hello"].as<double>());
-    REQUIRE(_object["hello"].is<double>());
-    REQUIRE_FALSE(_object["hello"].is<long>());
-  }
-
   SECTION("StoreBoolean") {
     _object.set("hello", true);
 

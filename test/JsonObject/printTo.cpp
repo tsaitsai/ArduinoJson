@@ -76,13 +76,6 @@ TEST_CASE("JsonObject::printTo()") {
     check(obj, "{\"a\":[1,2],\"b\":[4,5]}");
   }
 
-  SECTION("TwoDoublesFourDigits") {
-    obj["a"] = double_with_n_digits(3.14159265358979323846, 4);
-    obj.set("b", 2.71828182845904523536, 4);
-    obj.set("c", double_with_n_digits(3.14159265358979323846, 3));
-    check(obj, "{\"a\":3.1416,\"b\":2.7183,\"c\":3.142}");
-  }
-
   SECTION("TwoDoubleDefaultDigits") {
     obj["a"] = 3.14159265358979323846;
     obj.set("b", 2.71828182845904523536);

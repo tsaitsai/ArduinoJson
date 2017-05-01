@@ -57,24 +57,9 @@ TEST_CASE("JsonArray::printTo()") {
     check(array, "[3.14]");
   }
 
-  SECTION("OneDoubleFourDigits") {
-    array.add(3.14159265358979323846, 4);
-    check(array, "[3.1416]");
-  }
-
-  SECTION("OneDoubleFourDigits_AlternativeSyntax") {
-    array.add(double_with_n_digits(3.14159265358979323846, 4));
-    check(array, "[3.1416]");
-  }
-
   SECTION("OneFloatDefaultDigits") {
     array.add(3.14159f);
     check(array, "[3.14]");
-  }
-
-  SECTION("OneFloatFourDigits") {
-    array.add(3.14159f, 4);
-    check(array, "[3.1416]");
   }
 
   SECTION("OneInteger") {
