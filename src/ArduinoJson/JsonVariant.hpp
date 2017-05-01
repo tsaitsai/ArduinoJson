@@ -62,7 +62,7 @@ class JsonVariant : public JsonVariantBase<JsonVariant> {
   JsonVariant(T value, typename TypeTraits::EnableIf<
                            TypeTraits::IsFloatingPoint<T>::value>::type * = 0) {
     using namespace Internals;
-    _type = JSON_FLOAT_0_DECIMALS;
+    _type = JSON_FLOAT;
     _content.asFloat = static_cast<JsonFloat>(value);
   }
   template <typename T>
@@ -71,7 +71,7 @@ class JsonVariant : public JsonVariantBase<JsonVariant> {
               typename TypeTraits::EnableIf<
                   TypeTraits::IsFloatingPoint<T>::value>::type * = 0) {
     using namespace Internals;
-    _type = JSON_FLOAT_0_DECIMALS;
+    _type = JSON_FLOAT;
     _content.asFloat = static_cast<JsonFloat>(value);
   }
 
