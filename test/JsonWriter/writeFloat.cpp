@@ -35,7 +35,13 @@ TEST_CASE("JsonWriter::writeFloat()") {
     check(-inf, "-Infinity");
   }
 
-  SECTION("Zero") {
-    check(0, "0.0");
+  SECTION("One decimal place") {
+    check(0.0, "0.0");
+    check(0.1, "0.1");
+    check(0.9, "0.9");
+
+    check(9.0, "9.0");
+    check(9.1, "9.1");
+    check(9.9, "9.9");
   }
 }
