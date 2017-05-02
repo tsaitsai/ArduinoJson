@@ -155,4 +155,19 @@ TEST_CASE("JsonBuffer::parseObject()") {
     JsonObject& obj = jb.parseObject("null:\"value\"}");
     REQUIRE_FALSE(obj.success());
   }
+
+  SECTION("Issue #496") {
+    JsonObject& obj = jb.parseObject(
+        "{\"HTTP\": {\"isEnabled\": true, \"httpPort\": 80, \"fileNotFound\": "
+        "\"/cfg/404.html\", \"mimeTypes\": {\"html\": \"text/html\", \"log\": "
+        "\"plain/text\", \"css\": \"text/css\", \"json\": "
+        "\"application/json\", \"gz\": \"application/x-gzip\", \"js\": "
+        "\"application/javascript\", \"ico\": \"image/ico\", \"woff2\": "
+        "\"font/woff2\", \"svg\": \"image/svg+xml\", \"png\": \"image/png\"} } "
+        "}");
+    const char* val = obj["HTTP"]["mimeTypes"]["svg"];
+    REQUIRE(obj.success());
+    REQUIRE(val != 0);
+    REQUIRE(std::string("image/svg+xml") == val);
+  }
 }
